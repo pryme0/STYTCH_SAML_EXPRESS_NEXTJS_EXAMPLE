@@ -164,25 +164,6 @@ const SignInPage: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full items-center justify-center bg-gray-100">
-      <div className="flex justify-center mb-4">
-        <button
-          className={`py-2 px-4 rounded ${
-            activeTab === "SAML" ? "bg-[#19303d] text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setActiveTab("SAML")}
-        >
-          Sign in with SAML SSO
-        </button>
-        <button
-          className={`py-2 px-4 rounded ${
-            activeTab === "Stytch" ? "bg-[#19303d] text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setActiveTab("Stytch")}
-        >
-          Sign in with magic link
-        </button>
-      </div>
-
       {activeTab === "SAML" ? (
         <>
           <div className=" w-full sm:w-[398px] bg-white p-5 rounded-t-lg shadow-md border-custom-gray">
@@ -225,6 +206,21 @@ const SignInPage: React.FC = () => {
       ) : (
         config && <StytchB2B config={config} styles={styles} />
       )}
+
+      <div className="w-full sm:w-[398px] flex items-center justify-center my-4">
+        <hr className="flex-grow border-t border-gray-300" />
+        <span className="mx-4 text-gray-500">OR</span>
+        <hr className="flex-grow border-t border-gray-300" />
+      </div>
+
+      <button
+        className={`h-[47px] py-2 text-[#fff] font-[800] px-4 rounded w-full sm:w-[398px] bg-[#13e5c0]`}
+        onClick={() => setActiveTab(activeTab === "SAML" ? "Stytch" : "SAML")}
+      >
+        {activeTab === "SAML"
+          ? "Sign in with magic link"
+          : "Sign in with SAML SSO"}
+      </button>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Op } from "sequelize";
-import { Organization, Member } from "../database/models";
 import { B2BClient } from "stytch";
+import { Member, Organization } from "../database/models";
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -81,6 +81,7 @@ export const signUp = async (req: Request, res: Response) => {
       where: {
         [Op.or]: [{ companyName }, { domain }],
       },
+      include: ["members"],
     });
 
     if (!existingOrganization) {

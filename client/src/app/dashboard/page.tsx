@@ -61,18 +61,19 @@ const Dashboard: React.FC = () => {
     }
   }, [getProfile]);
 
-  const setActiveSection = (section: string) => {
-    dispatch({
-      type: "SET_DASHBOARD_INTERFACE",
-      payload: { activeSection: section },
-    });
+  const updateActiveSection = (section: string) => {
+    section &&
+      dispatch({
+        type: "SET_DASHBOARD_INTERFACE",
+        payload: { activeSection: section },
+      });
   };
 
   return (
     <div className="flex w-full min-h-screen bg-gray-100">
       <Sidebar
         activeSection={activeSection}
-        setActiveSection={setActiveSection}
+        setActiveSection={updateActiveSection}
       />
       <div className="flex justify-center w-full flex-grow p-6">
         {activeSection === "Profile" && <Profile />}
