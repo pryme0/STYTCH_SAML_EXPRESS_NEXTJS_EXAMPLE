@@ -1,0 +1,11 @@
+**/.env
+**/node_modules
+**/codealike.json
+**/database.sqlite
+
+
+
+**/build
+**/.env
+
+**/.next

@@ -1,9 +1,5 @@
 "use client";
 import "./App.css";
-import { Provider } from "react-redux";
-import store from "./store/store";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { createStytchB2BUIClient } from "@stytch/nextjs/b2b/ui";
 import { StytchB2BProvider } from "@stytch/nextjs/b2b";
 import AppLayout from "./components/layout/AppLayOut";
@@ -27,12 +23,9 @@ export default function RootLayout({
         <meta name="description" content="SAML Example App" />
       </head>
       <body>
-        <Provider store={store}>
-          <StytchB2BProvider stytch={stytch}>
-            <ToastContainer />
-            <AppLayout>{children}</AppLayout>
-          </StytchB2BProvider>
-        </Provider>
+        <StytchB2BProvider stytch={stytch}>
+          <AppLayout>{children}</AppLayout>
+        </StytchB2BProvider>
       </body>
     </html>
   );

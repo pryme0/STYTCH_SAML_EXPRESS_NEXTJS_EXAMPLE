@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import React, { useState } from "react";
 import { FaCog, FaUser, FaBars } from "react-icons/fa";
 
 export const Sidebar = ({

@@ -1,17 +1,25 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
+import pluginNext from "@next/eslint-plugin-next";
 
-export default [
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
-  {
-    rules: {
-      "no-console": ["error", { allow: ["warn", "error"] }],
-    },
+export default {
+  root: true,
+  plugins: ["@next"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@next/next/recommended",
+    ...tseslint.configs.recommended,
+  ],
+  languageOptions: {
+    globals: globals.browser,
   },
-];
+  rules: {
+    "no-console": ["error", { allow: ["warn", "error"] }],
+  },
+  overrides: [
+    {
+      files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    },
+  ],
+};
